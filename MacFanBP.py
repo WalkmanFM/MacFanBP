@@ -1,5 +1,5 @@
 #! /usr/bin/python
-
+#Author: Sergio José Martínez Perales
 from gi.repository import Gdk, GLib, GObject
 from gi.repository import Gtk as gtk
 from gi.repository import AppIndicator3 as appindicator
