@@ -369,6 +369,7 @@ class controlador:
     menu_item6.connect("activate", quit)
     menu.append(menu_item6)
     if(str(pname) == str("MacBookPro8,1") + "\n"): # MacBook Pro
+		menu_fanout.show()
         menu_item1MB.show()
         menu_item2MB.show()   
         menu_item3MB.show()
