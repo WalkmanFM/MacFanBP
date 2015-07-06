@@ -190,8 +190,14 @@ def quit(widget, data=None):
 
 
 class controlador:
-    item = "2000 RPM"
-    menu_item1MB = gtk.MenuItem(item)
+		
+    fanout = "Fan RPM"
+    menu_fanout = gtk.MenuItem(fanout)
+    menu_fanout.set_sensitive(False)
+    menu.append(menu_fanout)
+	
+    item1 = "2000 RPM"
+    menu_item1MB = gtk.MenuItem(item1)
     # Associate RPM2000 to item
     menu_item1MB.connect("activate", RPM2000)
     menu.append(menu_item1MB)
@@ -440,6 +446,10 @@ class controlador:
         temperatureC1=str(100 - int(infile.readline())/1000) +  u"\u2103".encode('utf-8')
         infile.close()
         
+        infile = open('/sys/devices/platform/applesmc.768/fan1_output', 'r') # MBP fan RPM output
+        fmbp = infile.readline()
+        infile.close() 
+        
         infile = open('/sys/devices/platform/applesmc.768/fan1_output', 'r') # CPU/MEM fan RPM output
         f1 = infile.readline()
         infile.close() 
@@ -459,7 +469,8 @@ class controlador:
         self.CPUMEMoutrpm.set_label(f1[:4]) # [:4] only first 4 characters
         self.IOoutrpm.set_label(f2[:4])       
         self.EXHAUSToutrpm.set_label(f3[:4])  
-        self.PSoutrpm.set_label(f4[:4])  
+        self.PSoutrpm.set_label(f4[:4]) 
+        self.menu_fanout.set_label(fmbp[:4]) 
         self.ind.set_label(temperatureC0 + " " + temperatureC1,"")
         return True
         
