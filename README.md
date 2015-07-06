@@ -1,5 +1,5 @@
 # MacFanBP
-A temperature control Indicator for MacBook Pro Late 2011 13" users using Ubuntu.
+A temperature monitor Indicator for MacBook Pro Late 2011 13" users using Ubuntu.
 
 -To run the application, type: 
     python MacFanBP.py
