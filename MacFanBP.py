@@ -430,9 +430,16 @@ class controlador:
         infile = open('/sys/devices/platform/applesmc.768/temp4_input', 'r') #input Core 0 temp
         temperatureC0=str(int(infile.readline())/1000) +  u"\u2103".encode('utf-8')
         infile.close()  
+        
         infile = open('/sys/devices/platform/applesmc.768/temp10_input', 'r') #input Core 1 temp
         temperatureC1=str(int(infile.readline())/1000) +  u"\u2103".encode('utf-8')
-        infile.close()       
+        infile.close()
+        
+        infile = open('/sys/devices/platform/applesmc.768/fan1_input', 'r') # MBP fan RPM output
+        fmbp = infile.readline()
+        infile.close() 
+          
+        self.menu_fanout.set_label(fmbp[:4] + " RPM")   
         self.ind.set_label(temperatureC0 + " " + temperatureC1,"")
         return True
         
@@ -446,10 +453,6 @@ class controlador:
         infile = open('/sys/devices/platform/applesmc.768/temp5_input', 'r') #input Core 1 temp
         temperatureC1=str(100 - int(infile.readline())/1000) +  u"\u2103".encode('utf-8')
         infile.close()
-        
-        infile = open('/sys/devices/platform/applesmc.768/fan1_intput', 'r') # MBP fan RPM output
-        fmbp = infile.readline()
-        infile.close() 
         
         infile = open('/sys/devices/platform/applesmc.768/fan1_output', 'r') # CPU/MEM fan RPM output
         f1 = infile.readline()
@@ -467,11 +470,10 @@ class controlador:
         f4 = infile.readline()
         infile.close() 
   
-        self.CPUMEMoutrpm.set_label(f1[:4]) # [:4] only first 4 characters
-        self.IOoutrpm.set_label(f2[:4])       
-        self.EXHAUSToutrpm.set_label(f3[:4])  
-        self.PSoutrpm.set_label(f4[:4]) 
-        self.menu_fanout.set_label(fmbp[:4]) 
+        self.CPUMEMoutrpm.set_label(f1[:4] + " RPM") # [:4] only first 4 characters
+        self.IOoutrpm.set_label(f2[:4] + " RPM")       
+        self.EXHAUSToutrpm.set_label(f3[:4] + " RPM")  
+        self.PSoutrpm.set_label(f4[:4] + " RPM") 
         self.ind.set_label(temperatureC0 + " " + temperatureC1,"")
         return True
         
