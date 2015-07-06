@@ -447,7 +447,7 @@ class controlador:
         temperatureC1=str(100 - int(infile.readline())/1000) +  u"\u2103".encode('utf-8')
         infile.close()
         
-        infile = open('/sys/devices/platform/applesmc.768/fan1_output', 'r') # MBP fan RPM output
+        infile = open('/sys/devices/platform/applesmc.768/fan1_intput', 'r') # MBP fan RPM output
         fmbp = infile.readline()
         infile.close() 
         
