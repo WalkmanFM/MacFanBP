@@ -1,5 +1,5 @@
 # MacFanBP
-A temperature monitor Indicator for MacBook Pro Late 2011 13" users using Ubuntu.
+A temperature monitor Indicator for MacBook Pro 8,1 and Mac Pro 1,1 running Ubuntu.
 
 -To run the application, type: 
 
